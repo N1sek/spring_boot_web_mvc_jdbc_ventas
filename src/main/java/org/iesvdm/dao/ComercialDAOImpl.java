@@ -49,8 +49,21 @@ public class ComercialDAOImpl implements ComercialDAO {
 
 	@Override
 	public Optional<Comercial> find(int id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		Comercial fab =  jdbcTemplate
+				.queryForObject("SELECT * FROM comercial WHERE id = ?"
+						, (rs, rowNum) -> new Comercial(rs.getInt("id"),
+								rs.getString("nombre"),
+								rs.getString("apellido1"),
+								rs.getString("apellido2"),
+								rs.getFloat("comisión"))
+						, id
+				);
+
+		if (fab != null) {
+			return Optional.of(fab);}
+		else {
+			log.info("Comercial no encontrado.");
+			return Optional.empty(); }
 	}
 
 	@Override

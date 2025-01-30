@@ -1,6 +1,6 @@
---DROP DATABASE IF EXISTS ventas;
---CREATE DATABASE ventas;
-
+-- DROP DATABASE IF EXISTS ventas;
+-- CREATE DATABASE ventas;
+-- DROP TABLE IF EXISTS cliente;
 -- Postgres no tiene USE
 -- USE ventas;
 
