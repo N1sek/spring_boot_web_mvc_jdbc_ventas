@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.iesvdm.dao.ClienteDAO;
+import org.iesvdm.dao.PedidoDAOImpl;
+import org.iesvdm.dto.ClienteDTO;
+import org.iesvdm.dto.PedidoDTO;
 import org.iesvdm.modelo.Cliente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
-	
+
 	private ClienteDAO clienteDAO;
-	
+
 	//Se utiliza inyección automática por constructor del framework Spring.
 	//Por tanto, se puede omitir la anotación Autowired
 	//@Autowired
@@ -41,7 +45,5 @@ public class ClienteService {
 	public void delete(int id) {
 		clienteDAO.delete(id);
 	}
-	
-	
 
 }

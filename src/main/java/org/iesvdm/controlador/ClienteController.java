@@ -1,7 +1,9 @@
 package org.iesvdm.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.iesvdm.dto.ClienteDTO;
 import org.iesvdm.modelo.Cliente;
 import org.iesvdm.service.ClienteService;
 import org.springframework.stereotype.Controller;
@@ -48,8 +50,10 @@ public class ClienteController {
 		return "redirect:/clientes";
 	}
 	
-	
-	
+	@GetMapping("/clientes/detalles/{id}")
+	public String detalles(@PathVariable("id") int id, Model model) {
+		Optional<ClienteDTO> clienteDTO = clienteService.detalles(id);
+	}
 	
 	
 

@@ -34,7 +34,7 @@
                     <td th:text="${cliente.ciudad}">ciudad</td>
                     <td th:text="${cliente.categoria}">categoría</td>
                     <td class="d-flex flex-row flex-wrap">
-                        <form th:action="@{/clientes/__${cliente.id}__}">
+                        <form th:action="@{/clientes/detalles/__${cliente.id}__}">
                             <input class="btn btn-primary" type="submit" th:value="#{verdetalles}" />
                         </form>
                         <form th:action="@{/clientes/editar/__${cliente.id}__}">
