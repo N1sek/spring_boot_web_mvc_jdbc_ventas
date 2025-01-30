@@ -1,14 +1,10 @@
 package org.iesvdm.dao;
 
-import lombok.extern.slf4j.Slf4j;
-import org.iesvdm.dto.PedidoDTO;
 import org.iesvdm.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -16,7 +12,6 @@ public class PedidoDAOImpl implements PedidoDAO {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    ClienteDAOImpl clienteDAOImpl;
 
     @Override
     public List<Pedido> findByComercialID(int id) {

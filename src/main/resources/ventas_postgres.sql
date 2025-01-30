@@ -1,13 +1,13 @@
--- DROP DATABASE IF EXISTS ventas;
--- CREATE DATABASE ventas;
--- DROP TABLE IF EXISTS cliente;
+--DROP DATABASE IF EXISTS ventas;
+--CREATE DATABASE ventas;
+
 -- Postgres no tiene USE
 -- USE ventas;
 
 CREATE TABLE cliente (
-                        -- Postgres no tiene auto_increment utiliza SERIAL
-                        --   |
-                        --   v
+    -- Postgres no tiene auto_increment utiliza SERIAL
+    --   |
+    --   v
                          id SERIAL PRIMARY KEY,
                          nombre VARCHAR(100) NOT NULL,
                          apellido1 VARCHAR(100) NOT NULL,
@@ -26,9 +26,9 @@ CREATE TABLE comercial (
 
 CREATE TABLE pedido (
                         id SERIAL PRIMARY KEY,
-                        --  DOUBLE NECESITA PRECISION
-                        --                  |
-                        --                  V
+    --  DOUBLE NECESITA PRECISION
+    --                  |
+    --                  V
                         total DOUBLE PRECISION NOT NULL,
                         fecha DATE,
                         id_cliente INT NOT NULL,

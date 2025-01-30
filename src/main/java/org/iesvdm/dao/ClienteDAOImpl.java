@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.iesvdm.modelo.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,6 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override	
 	public synchronized void create(Cliente cliente) {
 		
-							//Desde java15+ se tiene la triple quote """ para bloques de texto como cadenas.
 		String sqlInsert = """
 							INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoría) 
 							VALUES  (     ?,         ?,         ?,       ?,         ?)
@@ -92,7 +92,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 	@Override
 	public Optional<Cliente> find(int id) {
 		
-		Cliente fab =  jdbcTemplate
+		Cliente cliente =  jdbcTemplate
 				.queryForObject("SELECT * FROM cliente WHERE id = ?"														
 								, (rs, rowNum) -> new Cliente(rs.getInt("id"),
             						 						rs.getString("nombre"),
@@ -103,13 +103,14 @@ public class ClienteDAOImpl implements ClienteDAO {
 								, id
 								);
 		
-		if (fab != null) { 
-			return Optional.of(fab);}
+		if (cliente != null) {
+			return Optional.of(cliente);}
 		else { 
 			log.info("Cliente no encontrado.");
-			return Optional.empty(); }
-        
+			return Optional.empty();
+		}
 	}
+
 	/**
 	 * Actualiza Cliente con campos del bean Cliente según ID del mismo.
 	 */
